@@ -6,11 +6,16 @@ const quote=[
     ["How do you comfort a JavaScript bug? You console it"],
     ["the person went to the doctor and told the doctor he had an addiction to twitter and the doctor said well I am not following."]
 ];
-
+try{
 app.get("/quote/",(req,res)=>{
     const i=Math.floor(Math.random()*3);
     res.send(quote[i]);
 });
+}
+catch{
+        res.send("Error");
+    }; 
+
 
 app.get("/",(req,res)=>{
     res.send("Welcome!")
