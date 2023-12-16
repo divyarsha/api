@@ -6,16 +6,24 @@ const quote=[
     ["How do you comfort a JavaScript bug? You console it"],
     ["the person went to the doctor and told the doctor he had an addiction to twitter and the doctor said well I am not following."]
 ];
-try{
+
+const inputValue=input.value;
+
 app.get("/quote/",(req,res)=>{
     const i=Math.floor(Math.random()*3);
     res.send(quote[i]);
 });
-}
-catch{
-        res.send("Error");
-    }; 
 
+app.get("/inputValue/",(req,res)=>{
+    res.send("Error");
+});
+
+// Example error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Internal Server Error');
+  });
+  
 
 app.get("/",(req,res)=>{
     res.send("Welcome!")
