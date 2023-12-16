@@ -7,23 +7,16 @@ const quote=[
     ["the person went to the doctor and told the doctor he had an addiction to twitter and the doctor said well I am not following."]
 ];
 
-const inputValue=input.value;
 
 app.get("/quote/",(req,res)=>{
     const i=Math.floor(Math.random()*3);
     res.send(quote[i]);
 });
 
-app.get("/inputValue/",(req,res)=>{
-    res.send("Error");
+app.all("*",(req,res)=>{
+    res.status(404).res.send("Name Error");
 });
 
-// Example error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Internal Server Error');
-  });
-  
 
 app.get("/",(req,res)=>{
     res.send("Welcome!")
