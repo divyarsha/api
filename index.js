@@ -14,7 +14,7 @@ app.get("/quote/",(req,res)=>{
 });
 
 app.all("*",(req,res)=>{
-    res.status(404).res.send("Name Error");
+    res.status(404).send("Name Error");
 });
 
 
